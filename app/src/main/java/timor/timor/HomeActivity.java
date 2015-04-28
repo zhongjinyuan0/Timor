@@ -6,11 +6,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
 
@@ -31,11 +34,25 @@ public class HomeActivity extends ActionBarActivity implements ViewPager.OnPageC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        menu();
         init();
 
+    }
 
+    public void menu(){
+        SlidingMenu slidingMenu = new SlidingMenu(this);
+        slidingMenu.setMode(SlidingMenu.LEFT);
+        slidingMenu.setMenu(R.layout.slidingmenu);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        slidingMenu.setBehindWidth(metrics.widthPixels/4*3);
+
+        slidingMenu.attachToActivity(this,SlidingMenu.SLIDING_WINDOW);
 
     }
+
 
     public void init(){
         homePagerRadioGroup = (RadioGroup) findViewById(R.id.homePagerRadioGroup);
