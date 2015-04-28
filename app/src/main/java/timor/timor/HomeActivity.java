@@ -44,7 +44,7 @@ public class HomeActivity extends ActionBarActivity implements ViewPager.OnPageC
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setMenu(R.layout.slidingmenu);
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-
+//nnnnn
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         slidingMenu.setBehindWidth(metrics.widthPixels/4*3);
